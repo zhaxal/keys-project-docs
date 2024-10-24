@@ -1,14 +1,13 @@
 baseURL = "https://your-site-url/"
 languageCode = "en-us"
-title = "Your Documentation"
+title = "KEYS project documentation"
 theme = "hugo-book"
 defaultContentLanguage = "en"
 enableGitInfo = true
 
 [params]
-  BookTitle = "Your Documentation"
-  BookLogo = "/images/logo.png" # Optional, remove if not needed
-  BookAuthor = "Your Name"
+  BookTitle = "KEYS project documentation"
+  BookAuthor = "Zhakhangir Anuarbek"
   BookDescription = "Description of your project."
 
 # Optional: Set up the sidebar menu

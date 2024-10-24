@@ -1,0 +1,30 @@
+baseURL = "https://your-site-url/"
+languageCode = "en-us"
+title = "Your Documentation"
+theme = "hugo-book"
+defaultContentLanguage = "en"
+enableGitInfo = true
+
+[params]
+  BookTitle = "Your Documentation"
+  BookLogo = "/images/logo.png" # Optional, remove if not needed
+  BookAuthor = "Your Name"
+  BookDescription = "Description of your project."
+
+# Optional: Set up the sidebar menu
+  ChapterMenu = true # Show the menu structure on the left sidebar.
+
+# Search configuration
+[outputs]
+  home = ["HTML", "JSON"]  # This is needed for the search functionality.
+  
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Documentation"
+    url = "/docs/"
+    weight = 2
+

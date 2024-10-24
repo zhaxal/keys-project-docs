@@ -3,12 +3,58 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="
+  API Documentation
+  #
+
+
+  Endpoints
+  #
+
+
+  1. Get Records
+  #
+
+Endpoint: GET /records
+Description: Retrieves a paginated list of records for the authenticated user.
+Query Parameters:
+
+apiToken (string, required): The API token for authentication.
+page (number, optional): The page number for pagination (default is 1).
+limit (number, optional): The number of records per page (default is 10).
+
+Response:
+
+200 OK: Returns a JSON object containing the paginated records.
+{
+  &#34;page&#34;: 1,
+  &#34;limit&#34;: 10,
+  &#34;totalPages&#34;: 5,
+  &#34;totalRecords&#34;: 50,
+  &#34;records&#34;: [
+    {
+      &#34;humidity&#34;: 45.5,
+      &#34;temperature&#34;: 22.3,
+      &#34;deviceTime&#34;: &#34;2023-10-01T12:34:56.789Z&#34;
+    },
+    ...
+  ]
+}
+
+400 Bad Request: Invalid page or limit number.
+401 Unauthorized: Missing or invalid API token.
+
+Example Request:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/records/">
   <meta property="og:site_name" content="KEYS project documentation">
   <meta property="og:title" content="Records">
+  <meta property="og:description" content="API Documentation#Endpoints#1. Get Records#Endpoint: GET /records
+Description: Retrieves a paginated list of records for the authenticated user.
+Query Parameters:
+apiToken (string, required): The API token for authentication. page (number, optional): The page number for pagination (default is 1). limit (number, optional): The number of records per page (default is 10). Response:
+200 OK: Returns a JSON object containing the paginated records. { &#34;page&#34;: 1, &#34;limit&#34;: 10, &#34;totalPages&#34;: 5, &#34;totalRecords&#34;: 50, &#34;records&#34;: [ { &#34;humidity&#34;: 45.5, &#34;temperature&#34;: 22.3, &#34;deviceTime&#34;: &#34;2023-10-01T12:34:56.789Z&#34; }, ... ] } 400 Bad Request: Invalid page or limit number. 401 Unauthorized: Missing or invalid API token. Example Request:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -19,7 +65,7 @@
 <link rel="canonical" href="http://localhost:1313/docs/records/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.2b6333591953211fc501497937cbcdc6fcf29ad8ccca8f8e9dfa3e18bbb5848a.js" integrity="sha256-K2MzWRlTIR/FAUl5N8vNxvzymtjMyo&#43;Onfo&#43;GLu1hIo=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2e966bdf727b0592a505ff5a2764255b5c57069a148003b1c62d8e173128b0d1.js" integrity="sha256-LpZr33J7BZKlBf9aJ2QlW1xXBpoUgAOxxi2OFzEosNE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -64,6 +110,17 @@ https://github.com/alex-shpak/hugo-book
   
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/records/" class="active">Records</a>
+  
+
+        </li>
       
     
   </ul>
@@ -115,7 +172,24 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#api-documentation">API Documentation</a></li>
+      </ul>
+    </li>
+    <li><a href="#endpoints">Endpoints</a>
+      <ul>
+        <li><a href="#1-get-records">1. Get Records</a></li>
+        <li><a href="#2-create-record">2. Create Record</a></li>
+        <li><a href="#3-create-multiple-records">3. Create Multiple Records</a></li>
+        <li><a href="#error-responses">Error Responses</a></li>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -126,7 +200,147 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h3 id="api-documentation">
+  API Documentation
+  <a class="anchor" href="#api-documentation">#</a>
+</h3>
+<h2 id="endpoints">
+  Endpoints
+  <a class="anchor" href="#endpoints">#</a>
+</h2>
+<h3 id="1-get-records">
+  1. Get Records
+  <a class="anchor" href="#1-get-records">#</a>
+</h3>
+<p><strong>Endpoint:</strong> <code>GET /records</code></p>
+<p><strong>Description:</strong> Retrieves a paginated list of records for the authenticated user.</p>
+<p><strong>Query Parameters:</strong></p>
+<ul>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A8%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>apiToken</code></a> (string, required): The API token for authentication.</li>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A21%2C%22character%22%3A8%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>page</code></a> (number, optional): The page number for pagination (default is 1).</li>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A22%2C%22character%22%3A8%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>limit</code></a> (number, optional): The number of records per page (default is 10).</li>
+</ul>
+<p><strong>Response:</strong></p>
+<ul>
+<li><code>200 OK</code>: Returns a JSON object containing the paginated records.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;page&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;limit&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;totalPages&#34;</span>: <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;totalRecords&#34;</span>: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;records&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;humidity&#34;</span>: <span style="color:#ae81ff">45.5</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;temperature&#34;</span>: <span style="color:#ae81ff">22.3</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;deviceTime&#34;</span>: <span style="color:#e6db74">&#34;2023-10-01T12:34:56.789Z&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">...</span>
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li><code>400 Bad Request</code>: Invalid page or limit number.</li>
+<li><code>401 Unauthorized</code>: Missing or invalid API token.</li>
+</ul>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl -X GET <span style="color:#e6db74">&#34;https://kb.nu-agridx.club/api/records?apiToken=your_api_token_here&amp;page=1&amp;limit=10&#34;</span>
+</span></span></code></pre></div><h3 id="2-create-record">
+  2. Create Record
+  <a class="anchor" href="#2-create-record">#</a>
+</h3>
+<p><strong>Endpoint:</strong> <code>POST /records</code></p>
+<p><strong>Description:</strong> Creates a new record for the authenticated user.</p>
+<p><strong>Query Parameters:</strong></p>
+<ul>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A8%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>apiToken</code></a> (string, required): The API token for authentication.</li>
+</ul>
+<p><strong>Request Body:</strong></p>
+<ul>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A57%2C%22character%22%3A2%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>humidity</code></a> (number, required): The humidity value (must be &gt;= 0).</li>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A58%2C%22character%22%3A2%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>temperature</code></a> (number, required): The temperature value (must be &gt;= -273.15).</li>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A59%2C%22character%22%3A2%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>deviceTime</code></a> (string, required): The device time in ISO format.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<ul>
+<li><code>200 OK</code>: Record created successfully.</li>
+<li><code>400 Bad Request</code>: Invalid request body.</li>
+<li><code>401 Unauthorized</code>: Missing or invalid API token.</li>
+</ul>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl -X POST <span style="color:#e6db74">&#34;https://kb.nu-agridx.club/api/records?apiToken=your_api_token_here&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;humidity&#34;: 45.5,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;temperature&#34;: 22.3,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;deviceTime&#34;: &#34;2023-10-01T12:34:56.789Z&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+</span></span></code></pre></div><h3 id="3-create-multiple-records">
+  3. Create Multiple Records
+  <a class="anchor" href="#3-create-multiple-records">#</a>
+</h3>
+<p><strong>Endpoint:</strong> <code>POST /records/bulk</code></p>
+<p><strong>Description:</strong> Creates multiple records for the authenticated user.</p>
+<p><strong>Query Parameters:</strong></p>
+<ul>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A8%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>apiToken</code></a> (string, required): The API token for authentication.</li>
+</ul>
+<p><strong>Request Body:</strong></p>
+<ul>
+<li>An array of record objects, each containing:
+<ul>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A57%2C%22character%22%3A2%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>humidity</code></a> (number, required): The humidity value (must be &gt;= 0).</li>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A58%2C%22character%22%3A2%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>temperature</code></a> (number, required): The temperature value (must be &gt;= -273.15).</li>
+<li><a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A59%2C%22character%22%3A2%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>deviceTime</code></a> (string, required): The device time in ISO format.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Response:</strong></p>
+<ul>
+<li><code>200 OK</code>: Records created successfully.</li>
+<li><code>400 Bad Request</code>: Invalid request body.</li>
+<li><code>401 Unauthorized</code>: Missing or invalid API token.</li>
+</ul>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl -X POST <span style="color:#e6db74">&#34;https://kb.nu-agridx.club/api/records/bulk?apiToken=your_api_token
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">_here
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;humidity&#34;: 45.5,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;temperature&#34;: 22.3,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;deviceTime&#34;: &#34;2023-10-01T12:34:56.789Z&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;humidity&#34;: 50.1,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;temperature&#34;: 23.4,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;deviceTime&#34;: &#34;2023-10-01T13:45:12.345Z&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;humidity&#34;: 55.2,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;temperature&#34;: 24.5,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;deviceTime&#34;: &#34;2023-10-01T14:56:23.456Z&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ]&#39;</span>
+</span></span></code></pre></div><h3 id="error-responses">
+  Error Responses
+  <a class="anchor" href="#error-responses">#</a>
+</h3>
+<ul>
+<li><strong>400 Bad Request</strong>: The request was invalid or cannot be otherwise served. An accompanying error message will explain further.</li>
+<li><strong>401 Unauthorized</strong>: Authentication is required and has failed or has not yet been provided.</li>
+</ul>
+<h3 id="notes">
+  Notes
+  <a class="anchor" href="#notes">#</a>
+</h3>
+<ul>
+<li>Ensure that the <a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A8%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>apiToken</code></a> is included in the query parameters for authentication.</li>
+<li>The <a href="command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fzhaxal%2FDocuments%2FProjects%2Fdata-server%2Fbackend%2Fsrc%2Froutes%2Fapi%2FrecordsRouter.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A59%2C%22character%22%3A2%7D%7D%5D%2C%2203303b74-b461-41d9-80b4-97ed223d9380%22%5D" title="Go to definition"><code>deviceTime</code></a> should be in ISO 8601 format (<code>YYYY-MM-DDTHH:mm:ss.sssZ</code>).</li>
+</ul>
+<p>This documentation provides an overview of the available endpoints, their parameters, request bodies, and example <code>curl</code> commands for interacting with the API.</p>
+</article>
  
       
 
@@ -151,6 +365,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -161,7 +379,24 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#api-documentation">API Documentation</a></li>
+      </ul>
+    </li>
+    <li><a href="#endpoints">Endpoints</a>
+      <ul>
+        <li><a href="#1-get-records">1. Get Records</a></li>
+        <li><a href="#2-create-record">2. Create Record</a></li>
+        <li><a href="#3-create-multiple-records">3. Create Multiple Records</a></li>
+        <li><a href="#error-responses">Error Responses</a></li>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
